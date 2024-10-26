@@ -205,7 +205,7 @@ client.on('messageCreate', async message => {
         });
     }
 
-
+ 
 
 
     // Command to remove timeout from a user
@@ -248,10 +248,10 @@ client.on('messageCreate', async message => {
         const fetched = await message.channel.messages.fetch({ limit: amount });
         await message.channel.bulkDelete(fetched);
         message.channel.send(`Deleted ${fetched.size} messages.`);
-
+   
     }
  // Command to display the member count
-
+    
     if (message.content.startsWith('!membercount')) {
         const memberCount = message.guild.memberCount; // Get total member count
         message.channel.send(`Total members in this server: ${memberCount}`);
@@ -268,7 +268,7 @@ client.on('messageCreate', async message => {
         .join('\n') || 'No reputation points yet.';
 
     message.channel.send(`**Reputation Leaderboard:**\n${leaderboard}`);
-
+    
 }
 
 
@@ -326,7 +326,7 @@ client.on('messageCreate', async message => {
 
     // Detect keyword "resource" in message
     if (message.content.toLowerCase().includes("resource")) {
-        const response = `Need study material? 📖 **Crack O/A Level has it all**! From engaging lectures to comprehensive notes to topical past papers. You can get them all and more.🤩
+        const response = `Need study material? **Crack O/A Level has it all**! From engaging lectures to comprehensive notes to topical past papers. You can get them all and more.
 
 **Any catch?**
 
@@ -338,7 +338,7 @@ Visit now:
 
         message.channel.send(response);
     }
-
+    
     // Add other commands or functionalities below...
 });
 client.on('messageCreate', async message => {
@@ -349,7 +349,7 @@ client.on('messageCreate', async message => {
     if (message.content.startsWith('!wiperep')) {
         // Check if the user has the necessary permissions
         if (!message.member.permissions.has('ADMINISTRATOR')) {
-            return message.channel.send("You don't have permission to reset reputation. ❌");
+            return message.channel.send("You don't have permission to reset reputation.");
         }
 
         // Get the mentioned user
@@ -367,9 +367,9 @@ client.on('messageCreate', async message => {
             // Save updated reputation to file
             fs.writeFileSync(reputationFilePath, JSON.stringify(reputation, null, 2));
 
-            message.channel.send(`Reputation for <@${userId}> has been reset to 0. ✅`);
+            message.channel.send(`Reputation for <@${userId}> has been reset to 0.`);
         } else {
-            message.channel.send("This user doesn't have any reputation to reset.❌");
+            message.channel.send("This user doesn't have any reputation to reset.");
         }
     }
 
@@ -383,12 +383,12 @@ client.on('messageCreate', async (message) => {
 
         // Check if the user has permission to timeout members
         if (!message.member.permissions.has('MODERATE_MEMBERS')) {
-            return message.channel.send("You don't have permission to timeout members.❌");
+            return message.channel.send("You don't have permission to timeout members.");
         }
 
         // Check if we have enough arguments (e.g., !timeout @User 10 m)
         if (args.length < 4) {
-            return message.channel.send("Invalid duration format. Use [number] [unit] (e.g., 10 s, 1 h, 2 d, 1 y). ❌");
+            return message.channel.send("Invalid duration format. Use [number] [unit] (e.g., 10 s, 1 h, 2 d, 1 y).");
         }
 
         const mentionedUser = message.mentions.users.first();
@@ -396,11 +396,11 @@ client.on('messageCreate', async (message) => {
         const durationUnit = args[3];
 
         if (!mentionedUser) {
-            return message.channel.send("Please mention a user to timeout.⚠️");
+            return message.channel.send("Please mention a user to timeout.");
         }
 
         if (isNaN(durationValue) || durationValue <= 0) {
-            return message.channel.send("Please provide a valid duration number.⚠️");
+            return message.channel.send("Please provide a valid duration number.");
         }
 
         let timeoutDuration;
@@ -486,4 +486,4 @@ client.on('messageCreate', async (message) => {
 
 
 // Log in to Discord with your app's token
-client.login('MTI5OTM1NDIwNTg4NjM1MzQxOA.GXapMI.Jx0g1NMK23PjCMzpuoBxtB_OJcr95obQmSWNjI'); // Replace with your bot token
+client.login('MTI5OTM1NDIwNTg4NjM1MzQxOA.GUV7f8.bJyAqIIE7Yc5D5T-2bvF01vBHRRKqq0__gxEGc'); // Replace with your bot token
